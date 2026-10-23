@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { -webkit-text-size-adjust: 100%; }
+body { word-break: keep-all; }
+
+/* 머티리얼 아이콘: 폰트가 늦게 오거나 없을 때 글자가 튀어나오지 않게 고정 */
+.icon {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal; font-style: normal; font-size: 24px;
+  line-height: 1; display: inline-block; width: 1em; height: 1em;
+  overflow: hidden; white-space: nowrap; vertical-align: middle;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  -webkit-font-feature-settings: "liga"; font-feature-settings: "liga";
+  visibility: hidden;
+}
+.icons-ready .icon { visibility: visible; }
+.icon-fill { font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24; }
+
+.md-check {
+  appearance: none; -webkit-appearance: none; width: 20px; height: 20px;
+  border: 2px solid #6b7280; border-radius: 3px; display: grid; place-content: center;
+  flex: 0 0 auto; cursor: pointer; margin-top: 2px; transition: background .15s, border-color .15s;
+}
+.md-check::after {
+  content: ""; width: 10px; height: 6px; border-left: 2px solid #fff; border-bottom: 2px solid #fff;
+  transform: rotate(-45deg) translate(1px, -1px); opacity: 0;
+}
+.md-check:checked { background: #1f6b45; border-color: #1f6b45; }
+.md-check:checked::after { opacity: 1; }
+
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .chev { transform: rotate(180deg); }
+.chev { transition: transform .2s; }
+
+.safe-top { padding-top: env(safe-area-inset-top, 0px); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+:focus-visible { outline: 2px solid #1f6b45; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
