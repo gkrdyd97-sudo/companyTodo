@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { supabase, isConfigured } from "./supabaseClient";
+import { isConfigured } from "./supabaseClient";
+import { watchSession, displayName } from "./lib/auth";
 import Icon from "./components/Icon";
 import SetupScreen from "./components/SetupScreen";
 import AuthScreen from "./components/AuthScreen";
@@ -20,15 +21,13 @@ export default function App() {
 
   useEffect(() => {
     if (!isConfigured) return;
-    supabase.auth.getSession().then(({ data }) => setSession(data.session));
-    const { data } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
-    return () => data.subscription.unsubscribe();
+    return watchSession(setSession);
   }, []);
 
   if (!isConfigured) return <SetupScreen />;
   if (session === undefined) return <div className="min-h-screen grid place-items-center text-gray-500">불러오는 중</div>;
   if (!session) return <AuthScreen />;
-  return <Main name={session.user.user_metadata?.name || session.user.email} />;
+  return <Main name={displayName(session.user)} />;
 }
 
 function Main({ name }) {

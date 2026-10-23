@@ -1,16 +1,5 @@
 import { useState } from "react";
-import { supabase } from "../supabaseClient";
-
-/**
- * Supabase 로그인은 이메일이 필요해서, 이름을 16진수로 바꾼 가짜 이메일을 아이디로 씁니다.
- * 같은 이름은 항상 같은 아이디가 되므로 이름이 겹치면 가입할 수 없습니다.
- */
-const ID_DOMAIN = "lucid-memo.vercel.app";
-function nameToEmail(name) {
-  const bytes = new TextEncoder().encode(name.trim().normalize("NFC").toLowerCase());
-  if (bytes.length > 32) throw new Error("NAME_TOO_LONG");
-  return Array.from(bytes, b => b.toString(16).padStart(2, "0")).join("") + "@" + ID_DOMAIN;
-}
+import { signIn, signUp } from "../lib/auth";
 
 export default function AuthScreen() {
   const [mode, setMode] = useState("signin");
@@ -23,14 +12,11 @@ export default function AuthScreen() {
     e.preventDefault();
     setBusy(true); setMsg("");
     try {
-      const email = nameToEmail(name);
       if (mode === "signin") {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
+        await signIn(name, password);
       } else {
-        const { data, error } = await supabase.auth.signUp({ email, password, options: { data: { name: name.trim() } } });
-        if (error) throw error;
-        if (!data.session) setMsg("가입은 됐지만 바로 로그인되지 않았습니다. 관리자에게 Supabase의 Confirm email 설정을 꺼 달라고 하세요.");
+        const loggedIn = await signUp(name, password);
+        if (!loggedIn) setMsg("가입은 됐지만 바로 로그인되지 않았습니다. 관리자에게 Supabase의 Confirm email 설정을 꺼 달라고 하세요.");
       }
     } catch (err) {
       const m = err.message || "";

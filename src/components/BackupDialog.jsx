@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
-import { supabase } from "../supabaseClient";
+import { signOut } from "../lib/auth";
 import { exportAll, importBackup } from "../lib/api";
 import { today } from "../lib/date";
 
@@ -52,7 +52,7 @@ export default function BackupDialog({ name, onClose, onImported, toast }) {
             <Icon name="upload" />백업 파일 가져오기
             <input type="file" accept="application/json,.json" className="sr-only" onChange={doImport} disabled={busy} />
           </label>
-          <button onClick={() => supabase.auth.signOut()} className="w-full h-11 rounded-full text-gray-700 font-medium hover:bg-gray-100 flex items-center justify-center gap-2"><Icon name="logout" />로그아웃</button>
+          <button onClick={signOut} className="w-full h-11 rounded-full text-gray-700 font-medium hover:bg-gray-100 flex items-center justify-center gap-2"><Icon name="logout" />로그아웃</button>
         </div>
         <p className="text-xs text-gray-500 mt-4">단일 파일 버전(데일리메모 HTML)에서 내려받은 백업도 가져올 수 있습니다.</p>
         <div className="flex justify-end mt-4">

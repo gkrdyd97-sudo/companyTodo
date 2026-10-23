@@ -13,6 +13,7 @@ lucid-memo/
 │  ├─ App.jsx                로그인 확인, 상단 바, 탭, 화면 전환
 │  ├─ supabaseClient.js      Supabase 연결
 │  ├─ lib/api.js             저장·불러오기 함수 모음 (데이터 작업은 전부 여기)
+│  ├─ lib/auth.js            가입·로그인·로그아웃 (이름을 내부 아이디로 바꾸는 곳)
 │  ├─ lib/date.js            날짜 계산
 │  ├─ data/categories.js     배울 것 50개 항목과 메모 칸 이름
 │  └─ components/            화면 조각 (캘린더, 하루, 기록, 배울 것, 로그인, 백업)
