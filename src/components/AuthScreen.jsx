@@ -1,9 +1,20 @@
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
 
+/**
+ * Supabase 로그인은 이메일이 필요해서, 이름을 16진수로 바꾼 가짜 이메일을 아이디로 씁니다.
+ * 같은 이름은 항상 같은 아이디가 되므로 이름이 겹치면 가입할 수 없습니다.
+ */
+const ID_DOMAIN = "lucid-memo.vercel.app";
+function nameToEmail(name) {
+  const bytes = new TextEncoder().encode(name.trim().normalize("NFC").toLowerCase());
+  if (bytes.length > 32) throw new Error("NAME_TOO_LONG");
+  return Array.from(bytes, b => b.toString(16).padStart(2, "0")).join("") + "@" + ID_DOMAIN;
+}
+
 export default function AuthScreen() {
   const [mode, setMode] = useState("signin");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState("");
@@ -12,20 +23,22 @@ export default function AuthScreen() {
     e.preventDefault();
     setBusy(true); setMsg("");
     try {
+      const email = nameToEmail(name);
       if (mode === "signin") {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
       } else {
-        const { data, error } = await supabase.auth.signUp({ email, password });
+        const { data, error } = await supabase.auth.signUp({ email, password, options: { data: { name: name.trim() } } });
         if (error) throw error;
-        if (!data.session) setMsg("가입 확인 메일을 보냈습니다. 메일의 링크를 누른 뒤 로그인하세요.");
+        if (!data.session) setMsg("가입은 됐지만 바로 로그인되지 않았습니다. 관리자에게 Supabase의 Confirm email 설정을 꺼 달라고 하세요.");
       }
     } catch (err) {
       const m = err.message || "";
-      setMsg(m.includes("Invalid login") ? "이메일이나 비밀번호가 맞지 않습니다."
-        : m.includes("already registered") ? "이미 가입된 이메일입니다. 로그인하세요."
+      setMsg(m === "NAME_TOO_LONG" ? "이름이 너무 깁니다. 한글 10자, 영문 32자까지 쓸 수 있습니다."
+        : m.includes("Invalid login") ? "이름이나 비밀번호가 맞지 않습니다."
+        : m.includes("already registered") ? "이미 있는 이름입니다. 본인이면 로그인하고, 아니면 다른 이름을 쓰세요."
         : m.includes("Password should") ? "비밀번호는 6자 이상이어야 합니다."
-        : m.includes("Email not confirmed") ? "가입 확인 메일의 링크를 먼저 눌러 주세요."
+        : m.includes("Email not confirmed") ? "가입 승인이 아직 안 됐습니다. 관리자에게 Supabase의 Confirm email 설정을 꺼 달라고 하세요."
         : "로그인하지 못했습니다. " + m);
     } finally { setBusy(false); }
   }
@@ -39,8 +52,8 @@ export default function AuthScreen() {
         </div>
         <h2 className="text-2xl font-medium mb-1">{mode === "signin" ? "로그인" : "계정 만들기"}</h2>
         <p className="text-sm text-gray-600 mb-6">로그인하면 PC와 휴대폰에서 같은 기록을 볼 수 있습니다.</p>
-        <label className="block text-sm font-medium mb-1" htmlFor="email">이메일</label>
-        <input id="email" type="email" required autoComplete="email" value={email} onChange={e => setEmail(e.target.value)}
+        <label className="block text-sm font-medium mb-1" htmlFor="name">이름</label>
+        <input id="name" type="text" required autoComplete="username" value={name} onChange={e => setName(e.target.value)}
           className="w-full h-12 px-3 rounded-lg border border-gray-300 focus:border-primary focus:outline-none mb-4" />
         <label className="block text-sm font-medium mb-1" htmlFor="pw">비밀번호</label>
         <input id="pw" type="password" required minLength={6} autoComplete={mode === "signin" ? "current-password" : "new-password"}

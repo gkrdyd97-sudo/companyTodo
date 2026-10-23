@@ -61,3 +61,35 @@ create policy "own checks" on public.learn_checks for all
 drop policy if exists "own custom items" on public.custom_items;
 create policy "own custom items" on public.custom_items for all
   using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- 5. 가입한 사람 이름 (Table Editor에서 user_id가 누구인지 보기 위한 표)
+-- 가입하면 아래 트리거가 자동으로 한 줄을 넣습니다.
+create table if not exists public.profiles (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  name text not null,
+  created_at timestamptz not null default now()
+);
+alter table public.profiles enable row level security;
+
+drop policy if exists "own profile" on public.profiles;
+create policy "own profile" on public.profiles for select
+  using (auth.uid() = user_id);
+
+create or replace function public.handle_new_user()
+returns trigger language plpgsql security definer set search_path = '' as $$
+begin
+  insert into public.profiles (user_id, name)
+  values (new.id, coalesce(new.raw_user_meta_data->>'name', new.email))
+  on conflict (user_id) do nothing;
+  return new;
+end;
+$$;
+
+drop trigger if exists on_auth_user_created on auth.users;
+create trigger on_auth_user_created after insert on auth.users
+  for each row execute function public.handle_new_user();
+
+-- 이 표를 만들기 전에 가입한 사람도 채워 넣습니다.
+insert into public.profiles (user_id, name)
+select id, coalesce(raw_user_meta_data->>'name', email) from auth.users
+on conflict (user_id) do nothing;

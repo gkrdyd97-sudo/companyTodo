@@ -4,7 +4,7 @@ import { supabase } from "../supabaseClient";
 import { exportAll, importBackup } from "../lib/api";
 import { today } from "../lib/date";
 
-export default function BackupDialog({ email, onClose, onImported, toast }) {
+export default function BackupDialog({ name, onClose, onImported, toast }) {
   const [busy, setBusy] = useState(false);
   const first = useRef(null);
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function BackupDialog({ email, onClose, onImported, toast }) {
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="w-full max-w-sm bg-white rounded-3xl shadow-e2 p-6">
         <h2 id="dlgTitle" className="text-xl font-medium mb-1">계정과 백업</h2>
-        <p className="text-sm text-gray-600 mb-5">{email}로 로그인되어 있습니다. 기록은 Supabase에 자동 저장되어 어느 기기에서든 이어집니다.</p>
+        <p className="text-sm text-gray-600 mb-5">{name} 님으로 로그인되어 있습니다. 기록은 Supabase에 자동 저장되어 어느 기기에서든 이어집니다.</p>
         <div className="space-y-2">
           <button ref={first} disabled={busy} onClick={doExport} className="w-full h-11 rounded-full bg-primary text-white font-medium flex items-center justify-center gap-2 hover:bg-primary-dark disabled:opacity-60"><Icon name="download" />백업 파일 내려받기</button>
           <label className="w-full h-11 rounded-full border border-gray-300 text-primary font-medium flex items-center justify-center gap-2 cursor-pointer hover:bg-primary-light">

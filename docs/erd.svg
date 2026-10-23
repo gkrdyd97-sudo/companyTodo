@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1290" height="860" viewBox="0 0 1290 860" font-family="Apple SD Gothic Neo, Pretendard, Helvetica, sans-serif">
+<rect width="1290" height="860" fill="#ffffff"/>
+<text x="60" y="52" font-size="24" font-weight="800" fill="#0f172a">루시드컬러 데일리메모 ERD</text>
+<text x="1200" y="52" font-size="13" fill="#64748b" text-anchor="end">Supabase · public 스키마 + auth.users</text>
+<path d="M495 434.0 H412.5 V182.0 H330" stroke="#475569" stroke-width="2" fill="none"/><path d="M344 182.0 L330 174.0 M344 182.0 L330 182.0 M344 182.0 L330 190.0" stroke="#475569" stroke-width="2" fill="none"/><line x1="350" x2="350" y1="174.0" y2="190.0" stroke="#475569" stroke-width="2"/><path d="M495 434.0 H412.5 V534.0 H330" stroke="#475569" stroke-width="2" fill="none"/><path d="M344 534.0 L330 526.0 M344 534.0 L330 534.0 M344 534.0 L330 542.0" stroke="#475569" stroke-width="2" fill="none"/><line x1="350" x2="350" y1="526.0" y2="542.0" stroke="#475569" stroke-width="2"/><line x1="485" x2="485" y1="426.0" y2="442.0" stroke="#475569" stroke-width="2"/><line x1="479" x2="479" y1="426.0" y2="442.0" stroke="#475569" stroke-width="2"/><path d="M765 434.0 H847.5 V182.0 H930" stroke="#475569" stroke-width="2" fill="none"/><path d="M916 182.0 L930 174.0 M916 182.0 L930 182.0 M916 182.0 L930 190.0" stroke="#475569" stroke-width="2" fill="none"/><line x1="910" x2="910" y1="174.0" y2="190.0" stroke="#475569" stroke-width="2"/><path d="M765 434.0 H847.5 V534.0 H930" stroke="#475569" stroke-width="2" fill="none"/><path d="M916 534.0 L930 526.0 M916 534.0 L930 534.0 M916 534.0 L930 542.0" stroke="#475569" stroke-width="2" fill="none"/><line x1="910" x2="910" y1="526.0" y2="542.0" stroke="#475569" stroke-width="2"/><line x1="775" x2="775" y1="426.0" y2="442.0" stroke="#475569" stroke-width="2"/><line x1="781" x2="781" y1="426.0" y2="442.0" stroke="#475569" stroke-width="2"/><line x1="630.0" x2="630.0" y1="380" y2="234" stroke="#475569" stroke-width="2" fill="none"/><line x1="622.0" x2="638.0" y1="370" y2="370" stroke="#475569" stroke-width="2"/><line x1="622.0" x2="638.0" y1="364" y2="364" stroke="#475569" stroke-width="2"/><line x1="622.0" x2="638.0" y1="244" y2="244" stroke="#475569" stroke-width="2"/><line x1="622.0" x2="638.0" y1="250" y2="250" stroke="#475569" stroke-width="2"/><text x="642.0" y="311.0" font-size="12" fill="#475569">1 : 1 · 가입 시 트리거로 자동 생성</text><path d="M1200 562.0 H1230 V154.0 H1200" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5" fill="none"/><text transform="translate(1246 358.0) rotate(90)" font-size="12" fill="#64748b" text-anchor="middle">직접 추가한 항목 체크 시 item_id = custom_items.id (FK 아님)</text><text x="404.5" y="424.0" font-size="12" fill="#475569" text-anchor="end">1 : N</text><text x="855.5" y="424.0" font-size="12" fill="#475569">1 : N</text>
+<g><rect x="60" y="100" width="270" height="218" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+<path d="M60 140 V110 a10 10 0 0 1 10 -10 H320 a10 10 0 0 1 10 10 V140 Z" fill="#2563eb"/>
+<text x="74" y="126" fill="#fff" font-size="16" font-weight="700">todos</text>
+<text x="316" y="126" fill="#fff" fill-opacity=".85" font-size="12" text-anchor="end">할 일</text>
+<rect x="74" y="146" width="26" height="16" rx="4" fill="#b45309" fill-opacity=".12"/><text x="87" y="158" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="136" y="159" font-size="14" font-weight="700" fill="#0f172a">id</text>
+<text x="316" y="159" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">uuid</text>
+<line x1="70" x2="320" y1="168" y2="168" stroke="#f1f5f9"/>
+<rect x="74" y="174" width="26" height="16" rx="4" fill="#7c3aed" fill-opacity=".12"/><text x="87" y="186" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="136" y="187" font-size="14" font-weight="400" fill="#0f172a">user_id</text>
+<text x="316" y="187" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">uuid</text>
+<line x1="70" x2="320" y1="196" y2="196" stroke="#f1f5f9"/>
+
+<text x="136" y="215" font-size="14" font-weight="400" fill="#0f172a">date</text>
+<text x="316" y="215" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">date</text>
+<line x1="70" x2="320" y1="224" y2="224" stroke="#f1f5f9"/>
+
+<text x="136" y="243" font-size="14" font-weight="400" fill="#0f172a">text</text>
+<text x="316" y="243" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">text</text>
+<line x1="70" x2="320" y1="252" y2="252" stroke="#f1f5f9"/>
+
+<text x="136" y="271" font-size="14" font-weight="400" fill="#0f172a">done</text>
+<text x="316" y="271" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">boolean</text>
+<line x1="70" x2="320" y1="280" y2="280" stroke="#f1f5f9"/>
+
+<text x="136" y="299" font-size="14" font-weight="400" fill="#0f172a">created_at</text>
+<text x="316" y="299" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">timestamptz</text>
+</g><g><rect x="60" y="480" width="270" height="246" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+<path d="M60 520 V490 a10 10 0 0 1 10 -10 H320 a10 10 0 0 1 10 10 V520 Z" fill="#2563eb"/>
+<text x="74" y="506" fill="#fff" font-size="16" font-weight="700">journals</text>
+<text x="316" y="506" fill="#fff" fill-opacity=".85" font-size="12" text-anchor="end">하루 학습 메모</text>
+<rect x="74" y="526" width="26" height="16" rx="4" fill="#b45309" fill-opacity=".12"/><text x="87" y="538" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text><rect x="104" y="526" width="26" height="16" rx="4" fill="#7c3aed" fill-opacity=".12"/><text x="117" y="538" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="136" y="539" font-size="14" font-weight="700" fill="#0f172a">user_id</text>
+<text x="316" y="539" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">uuid</text>
+<line x1="70" x2="320" y1="548" y2="548" stroke="#f1f5f9"/>
+<rect x="74" y="554" width="26" height="16" rx="4" fill="#b45309" fill-opacity=".12"/><text x="87" y="566" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="136" y="567" font-size="14" font-weight="700" fill="#0f172a">date</text>
+<text x="316" y="567" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">date</text>
+<line x1="70" x2="320" y1="576" y2="576" stroke="#f1f5f9"/>
+
+<text x="136" y="595" font-size="14" font-weight="400" fill="#0f172a">learned</text>
+<text x="316" y="595" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">text</text>
+<line x1="70" x2="320" y1="604" y2="604" stroke="#f1f5f9"/>
+
+<text x="136" y="623" font-size="14" font-weight="400" fill="#0f172a">verified</text>
+<text x="316" y="623" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">text</text>
+<line x1="70" x2="320" y1="632" y2="632" stroke="#f1f5f9"/>
+
+<text x="136" y="651" font-size="14" font-weight="400" fill="#0f172a">diff</text>
+<text x="316" y="651" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">text</text>
+<line x1="70" x2="320" y1="660" y2="660" stroke="#f1f5f9"/>
+
+<text x="136" y="679" font-size="14" font-weight="400" fill="#0f172a">questions</text>
+<text x="316" y="679" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">text</text>
+<line x1="70" x2="320" y1="688" y2="688" stroke="#f1f5f9"/>
+
+<text x="136" y="707" font-size="14" font-weight="400" fill="#0f172a">updated_at</text>
+<text x="316" y="707" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">timestamptz</text>
+</g><g><rect x="495" y="100" width="270" height="134" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+<path d="M495 140 V110 a10 10 0 0 1 10 -10 H755 a10 10 0 0 1 10 10 V140 Z" fill="#059669"/>
+<text x="509" y="126" fill="#fff" font-size="16" font-weight="700">profiles</text>
+<text x="751" y="126" fill="#fff" fill-opacity=".85" font-size="12" text-anchor="end">가입한 사람 이름</text>
+<rect x="509" y="146" width="26" height="16" rx="4" fill="#b45309" fill-opacity=".12"/><text x="522" y="158" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text><rect x="539" y="146" width="26" height="16" rx="4" fill="#7c3aed" fill-opacity=".12"/><text x="552" y="158" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="571" y="159" font-size="14" font-weight="700" fill="#0f172a">user_id</text>
+<text x="751" y="159" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">uuid</text>
+<line x1="505" x2="755" y1="168" y2="168" stroke="#f1f5f9"/>
+
+<text x="571" y="187" font-size="14" font-weight="400" fill="#0f172a">name</text>
+<text x="751" y="187" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">text</text>
+<line x1="505" x2="755" y1="196" y2="196" stroke="#f1f5f9"/>
+
+<text x="571" y="215" font-size="14" font-weight="400" fill="#0f172a">created_at</text>
+<text x="751" y="215" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">timestamptz</text>
+</g><g><rect x="495" y="380" width="270" height="162" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+<path d="M495 420 V390 a10 10 0 0 1 10 -10 H755 a10 10 0 0 1 10 10 V420 Z" fill="#475569"/>
+<text x="509" y="406" fill="#fff" font-size="16" font-weight="700">auth.users</text>
+<text x="751" y="406" fill="#fff" fill-opacity=".85" font-size="12" text-anchor="end">Supabase 계정 (자동 관리)</text>
+<rect x="509" y="426" width="26" height="16" rx="4" fill="#b45309" fill-opacity=".12"/><text x="522" y="438" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="571" y="439" font-size="14" font-weight="700" fill="#0f172a">id</text>
+<text x="751" y="439" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">uuid</text>
+<line x1="505" x2="755" y1="448" y2="448" stroke="#f1f5f9"/>
+
+<text x="571" y="467" font-size="14" font-weight="400" fill="#0f172a">email</text>
+<text x="751" y="467" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">text</text>
+<line x1="505" x2="755" y1="476" y2="476" stroke="#f1f5f9"/>
+
+<text x="571" y="495" font-size="14" font-weight="400" fill="#0f172a">encrypted_password</text>
+<text x="751" y="495" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">text</text>
+<line x1="505" x2="755" y1="504" y2="504" stroke="#f1f5f9"/>
+
+<text x="571" y="523" font-size="14" font-weight="400" fill="#0f172a">raw_user_meta_data</text>
+<text x="751" y="523" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">jsonb</text>
+</g><g><rect x="930" y="100" width="270" height="162" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+<path d="M930 140 V110 a10 10 0 0 1 10 -10 H1190 a10 10 0 0 1 10 10 V140 Z" fill="#2563eb"/>
+<text x="944" y="126" fill="#fff" font-size="16" font-weight="700">custom_items</text>
+<text x="1186" y="126" fill="#fff" fill-opacity=".85" font-size="12" text-anchor="end">직접 추가한 배울 것</text>
+<rect x="944" y="146" width="26" height="16" rx="4" fill="#b45309" fill-opacity=".12"/><text x="957" y="158" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="1006" y="159" font-size="14" font-weight="700" fill="#0f172a">id</text>
+<text x="1186" y="159" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">uuid</text>
+<line x1="940" x2="1190" y1="168" y2="168" stroke="#f1f5f9"/>
+<rect x="944" y="174" width="26" height="16" rx="4" fill="#7c3aed" fill-opacity=".12"/><text x="957" y="186" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="1006" y="187" font-size="14" font-weight="400" fill="#0f172a">user_id</text>
+<text x="1186" y="187" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">uuid</text>
+<line x1="940" x2="1190" y1="196" y2="196" stroke="#f1f5f9"/>
+
+<text x="1006" y="215" font-size="14" font-weight="400" fill="#0f172a">text</text>
+<text x="1186" y="215" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">text</text>
+<line x1="940" x2="1190" y1="224" y2="224" stroke="#f1f5f9"/>
+
+<text x="1006" y="243" font-size="14" font-weight="400" fill="#0f172a">created_at</text>
+<text x="1186" y="243" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">timestamptz</text>
+</g><g><rect x="930" y="480" width="270" height="134" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+<path d="M930 520 V490 a10 10 0 0 1 10 -10 H1190 a10 10 0 0 1 10 10 V520 Z" fill="#2563eb"/>
+<text x="944" y="506" fill="#fff" font-size="16" font-weight="700">learn_checks</text>
+<text x="1186" y="506" fill="#fff" fill-opacity=".85" font-size="12" text-anchor="end">배울 것 체크</text>
+<rect x="944" y="526" width="26" height="16" rx="4" fill="#b45309" fill-opacity=".12"/><text x="957" y="538" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text><rect x="974" y="526" width="26" height="16" rx="4" fill="#7c3aed" fill-opacity=".12"/><text x="987" y="538" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="1006" y="539" font-size="14" font-weight="700" fill="#0f172a">user_id</text>
+<text x="1186" y="539" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">uuid</text>
+<line x1="940" x2="1190" y1="548" y2="548" stroke="#f1f5f9"/>
+<rect x="944" y="554" width="26" height="16" rx="4" fill="#b45309" fill-opacity=".12"/><text x="957" y="566" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="1006" y="567" font-size="14" font-weight="700" fill="#0f172a">item_id</text>
+<text x="1186" y="567" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">text</text>
+<line x1="940" x2="1190" y1="576" y2="576" stroke="#f1f5f9"/>
+
+<text x="1006" y="595" font-size="14" font-weight="400" fill="#0f172a">checked_on</text>
+<text x="1186" y="595" font-size="12" fill="#64748b" text-anchor="end" font-family="Menlo, monospace">date</text>
+</g>
+
+<rect x="60" y="769" width="1140" height="56" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="80" y="784" width="26" height="16" rx="4" fill="#b45309" fill-opacity=".12"/><text x="93" y="796" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="114" y="796" font-size="13" fill="#334155">기본 키 (줄마다 겹치지 않는 값)</text>
+<rect x="330" y="784" width="26" height="16" rx="4" fill="#7c3aed" fill-opacity=".12"/><text x="343" y="796" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="364" y="796" font-size="13" fill="#334155">auth.users.id를 가리킴 · 계정을 지우면 기록도 함께 삭제</text>
+<path d="M790 792 H836" stroke="#475569" stroke-width="2" fill="none"/><path d="M836 792 L850 784 M836 792 L850 792 M836 792 L850 800" stroke="#475569" stroke-width="2" fill="none"/><line x1="830" x2="830" y1="784" y2="800" stroke="#475569" stroke-width="2"/>
+<text x="862" y="796" font-size="13" fill="#334155">한 사람이 여러 줄</text>
+<text x="1010" y="796" font-size="13" fill="#334155">모든 표: RLS로 본인 기록만</text>
+
+</svg>

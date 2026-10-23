@@ -28,10 +28,10 @@ export default function App() {
   if (!isConfigured) return <SetupScreen />;
   if (session === undefined) return <div className="min-h-screen grid place-items-center text-gray-500">불러오는 중</div>;
   if (!session) return <AuthScreen />;
-  return <Main email={session.user.email} />;
+  return <Main name={session.user.user_metadata?.name || session.user.email} />;
 }
 
-function Main({ email }) {
+function Main({ name }) {
   const now = new Date();
   const [tab, setTab] = useState("calendar");
   const [day, setDay] = useState(null);
@@ -87,7 +87,7 @@ function Main({ email }) {
         </div>
       </nav>
 
-      {dialog && <BackupDialog email={email} onClose={() => setDialog(false)} onImported={() => setRefreshKey(k => k + 1)} toast={toast} />}
+      {dialog && <BackupDialog name={name} onClose={() => setDialog(false)} onImported={() => setRefreshKey(k => k + 1)} toast={toast} />}
 
       <div role="status" aria-live="polite"
         className={`fixed left-1/2 bottom-24 md:bottom-8 z-50 -translate-x-1/2 bg-gray-900 text-white text-sm px-4 py-3 rounded-lg shadow-e2 transition-all ${snack ? "opacity-100" : "opacity-0 translate-y-2 pointer-events-none"}`}>

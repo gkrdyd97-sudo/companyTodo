@@ -27,7 +27,8 @@ lucid-memo/
 3. 프로젝트 대시보드 왼쪽 SQL Editor에서 `supabase/schema.sql` 내용을 전부 붙여 넣고 Run을 누릅니다.
 4. Project Settings → API에서 Project URL과 anon public 키를 복사합니다.
 5. 이 폴더의 `.env.example`을 복사해 `.env`로 이름을 바꾸고 두 값을 붙여 넣습니다.
-6. (선택) Authentication → Providers → Email에서 "Confirm email"을 끄면 가입 확인 메일 없이 바로 로그인됩니다. 혼자 쓰는 앱이면 꺼도 괜찮습니다.
+6. (필수) Authentication → Providers → Email에서 "Confirm email"을 끕니다. 이 앱은 이메일 대신 이름과 비밀번호로 가입하므로, 켜 두면 가입한 사람이 로그인할 수 없습니다.
+   가입한 사람의 이름은 Table Editor의 `profiles` 표에서 `user_id`와 함께 볼 수 있습니다.
 
 ## 실행
 
